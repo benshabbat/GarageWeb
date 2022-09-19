@@ -35,8 +35,7 @@ $con = ConnectToDB();
         <p>אנחנו מאוד רוצים לשרת את הלקוחות שלנו מכל הכיוונים בכל דרך.</p>
         <p> או ליצור קשר דרך האתר www.garage.com 03-999999 לתמיכה התקשרו .</p>
     </div>
-    <!-- custom js file link  -->
-<script src="js/script.js"></script>
+
 </body>
 
 </html>

@@ -24,8 +24,6 @@ if(isset($_POST['btn_login']))// connect to username
             {  
                 $_SESSION['ID'] = $row[0];
                 $_SESSION['username'] = $username;
-                $txt = "Welcome, ".$_SESSION['username'];
-                echo "<script>alert('$txt')</script>";
                 if(check_admin()) // check if admin
                 {
                     header("Refresh:1; url=admin.php");
@@ -60,24 +58,23 @@ if(isset($_POST['btn_login']))// connect to username
 
 <body>
     <header> <?php nav(); ?> </header>
-    <form class="res_form" method="post" action="login.php">
+    <form method="post" action="login.php">
         <!-- הכנסת נתונים לשדה -->
         <h2>התחברות</h2>
         <?php if($valid)echo '<label class="error">username or password is incorrect.</label>';?>
         <div class="input-group">
             <label>שם משתמש</label>
-            <input type="text" name="username" placeholder="שם משתמש" required>
+            <input type="text" name="username" placeholder="שם משתמש" autocomplete="off" required>
         </div>
         <div class="input-group">
             <label>סיסמא</label>
-            <input type="password" name="password" placeholder="סיסמא" required>
+            <input type="password" name="password" placeholder="סיסמא" autocomplete="off" required>
         </div>
         <div class="input-group">
             <button type="submit" name="btn_login" class="btn">התחברות</button>
         </div>
     </form>
-    <!-- custom js file link  -->
-<script src="js/script.js"></script>
+
 </body>
 
 </html>

@@ -52,7 +52,6 @@ if (isset($_POST['submitcars']))
         {    
         $valid_car=true;
         $idcar = $rowcars['idcar'];
-        
         $username = $rowcars['username'];
         $user_sql=" select * from users where username like '%$username%' ";     
         $query_user=mysqli_query($con,$user_sql);
@@ -136,8 +135,8 @@ if (isset($_POST['create'])) { // יוצר טיפול
         <h2>טיפול חדש</h2>
         <div class="input-search">
             <label>מספר רכב:</label>
-            <?php if(!$valid_car)echo '<label class="error">dont have this car/not the car username</label><br>';?>
-            <input type="text" name="idcar" placeholder="מספר רכב" value="<?php if(isset($idcar)) echo $idcar; ?>">
+            <?php if(!$valid_car)echo '<label class="error">dont have this car</label><br>';?>
+            <input type="text" name="idcar" placeholder="מספר רכב" value="<?php if(isset($idcar)) echo $idcar; ?>" autocomplete="off">
             <button type="submit" name="submitcars" class="btn">חפש</button>
         </div>
 
@@ -145,7 +144,7 @@ if (isset($_POST['create'])) { // יוצר טיפול
             <label>שם משתמש:</label>
             <?php if(!$valid_name)echo '<label class="error">dont have this username.</label><br>';?>
             <input type="text" name="username" placeholder=" שם משתמש"
-                value="<?php if(isset($username)) echo $username; ?>">
+                value="<?php if(isset($username)) echo $username; ?>" autocomplete="off">
             <button type="submit" name="submitusers" class="btn">חפש</button>
         </div>
 
@@ -153,12 +152,12 @@ if (isset($_POST['create'])) { // יוצר טיפול
             <label>מספר טלפון:</label>
             <?php if($valid_phone)echo '<label class="error">this number not same username number phone.</label><br>';?>
             <input type="text" name="phone" placeholder="מספר טלפון" pattern="[0-9]{3}-[0-9]{7}|[0-9]{10}"
-                title="מספר טלפון חייב להיות עם הסימן (-) לדוגמא(050-1234567)" value="<?php if(isset($phone)) echo $phone; ?>">
+                title="מספר טלפון חייב להיות עם הסימן (-) לדוגמא(050-1234567)" value="<?php if(isset($phone)) echo $phone; ?>" autocomplete="off">
         </div>
         <div class="input-group">
             <label>מונה ק"מ:</label>
             <input type="text" name="km" placeholder="מונה ק'מ" pattern="[0-9]{1-11}"
-                title="הקילומטרים חייבים להיות מספר" value="<?php if(isset($km)) echo $km; ?>">
+                title="הקילומטרים חייבים להיות מספר" value="<?php if(isset($km)) echo $km; ?>" autocomplete="off">
         </div>
         <div class="input-group">
             <label>סוג שירות:</label>
@@ -175,15 +174,14 @@ if (isset($_POST['create'])) { // יוצר טיפול
         </div>
         <div class="input-group">
             <label>הערה:</label>
-            <textarea type="text" name="text" placeholder="הערה" rows="8"></textarea>
+            <textarea type="text" name="text" placeholder="הערה" rows="8" autocomplete="off"></textarea>
         </div>
         <div class="input-group">
             <button type="submit" name="create" class="btn">צור טיפול</button>
         </div>
     </form>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+
 </body>
 
 </html>

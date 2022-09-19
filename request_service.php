@@ -33,10 +33,10 @@ if (isset($_POST['btn_create'])) // to sent request for service
  { 
     $typeservice= mysqli_real_escape_string($con,$_POST['typeservice']);   
     $text = mysqli_real_escape_string($con,$_POST['text']);
-    $sql = "insert into _message( fromU,toU,typeservice,phone,email,date,text) values ('$fromU','$toU','$typeservice','$phone','$email','$date','$text');";
+    $sql = "insert into message( fromU,toU,typeservice,phone,email,date,text) values ('$fromU','$toU','$typeservice','$phone','$email','$date','$text');";
     if($con->query($sql) === TRUE){ 
         echo '<script>alert("sent request")</script>';
-        $query_id = mysqli_query($con, "SELECT id FROM _message WHERE toU='$toU'");
+        $query_id = mysqli_query($con, "SELECT id FROM message WHERE toU='$toU'");
         $rows_id=mysqli_fetch_array($query_id);
         header("Refresh:1; url=message_DB.php");
         mysqli_close($con);
@@ -79,15 +79,13 @@ if (isset($_POST['btn_create'])) // to sent request for service
         </div>
         <div class="input-group">
             <label>הודעה:</label>
-            <textarea type="text" name="text" placeholder="הודעה" rows="8" required></textarea>
+            <textarea type="text" name="text" placeholder="הודעה" rows="8"  autocomplete="off" required></textarea>
         </div>
         <div class="input-group">
             <button type="submit" name="btn_create" class="btn">שלח</button>
         </div>
     </form>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
 </body>
 
 </html>

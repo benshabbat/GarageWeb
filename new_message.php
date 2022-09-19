@@ -38,7 +38,8 @@ if (isset($_POST['sendMessage'])) { // create web account
         $valid_name=true;
     }
     if($valid_name == true) {
-        $sql = "insert into message( fromU,toU,phone,typeservice,email,date,text) values ('$fromU','$toU','$phone','$typeservice','$email','$date','$text');";
+        $sql = "insert into message( fromU,toU,phone,typeservice,email,date,text) 
+        values ('$fromU','$toU','$phone','$typeservice','$email','$date','$text');";
             if($con->query($sql) === TRUE){ 
             echo '<script>alert("message sent")</script>';
             $query_id = mysqli_query($con, "SELECT id FROM message WHERE toU='$toU'");
@@ -89,7 +90,7 @@ if (isset($_POST['sendMessage'])) { // create web account
         </div>
         <div class="input-group">
             <label>הודעה:</label>
-            <textarea type="text" name="text" placeholder="הודעה" rows="8" required></textarea>
+            <textarea type="text" name="text" placeholder="הודעה" rows="8"  autocomplete="off" required></textarea>
         </div>
 
         <div class="input-group">
@@ -97,8 +98,7 @@ if (isset($_POST['sendMessage'])) { // create web account
         </div>
     </form>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+
 </body>
 
 </html>
